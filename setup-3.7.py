@@ -41,7 +41,7 @@ def setup_entrances(entrances: List[str], build_dir: str):
         cflags = ldflags.split(' -l')[0].replace('-L', '-Wl,-rpath,')
         print(f'building \'{name}\' executable')
         run_cmd(f'cython -3 --embed {py_path} -o {c_path}')
-        run_cmd(f'x86_64-conda-linux-gnu-gcc -Os {includes} {c_path} -o {exe_path} {cflags} {ldflags}')
+        run_cmd(f'gcc -Os {includes} {c_path} -o {exe_path} {cflags} {ldflags}')
 
 
 # NOTE: config the re patterns before starting setup
